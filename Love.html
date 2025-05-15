@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Love Login</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: cursive;
+      background: linear-gradient(120deg, #ffe0ec, #ffc2d4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .login-box {
+      background: white;
+      padding: 40px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    input {
+      display: block;
+      margin: 15px auto;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      width: 80%;
+    }
+
+    button {
+      padding: 10px 30px;
+      border: none;
+      background-color: #ff4f81;
+      color: white;
+      font-size: 16px;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    button:hover {
+      background-color: #d81b60;
+    }
+
+    .error {
+      color: red;
+      margin-top: 10px;
+    }
+
+    /* Landing Page Styles */
+    .landing {
+      background: url('jaan2');
+      height: 100vh;
+      overflow: auto;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .cutout-text {
+      font-size: 50px;
+      background: url('https://images.unsplash.com/photo-1529257414771-1960d16447a7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      animation: slideIn 2s ease-in-out;
+    }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .search-bar {
+      margin: 20px auto;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .search-bar input {
+      height: 20px;
+      width: 280px;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #fff;
+    }
+
+    .search-bar button {
+      padding: 10px 20px;
+      background-color: #fff;
+      color: #d81b60;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .search-bar button:hover {
+      background: #ffd6e0;
+    }
+
+    .main-photo {
+      width: 600px;
+      height: auto;
+      margin: 20px auto;
+      transition: 0.4s ease;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+      border-radius: 20px;
+    }
+
+    .main-photo:hover {
+      transform: scale(1.05);
+    }
+
+    .rotating-photos {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .photo {
+      width: 150px;
+      height: 200px;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+      position: relative;
+    }
+
+    .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Animation for each */
+    .left-in {
+      animation: slideLeft 2s ease;
+    }
+
+    .middle-rotate {
+      animation: rotateY360 8s linear infinite;
+    }
+
+    .right-in {
+      animation: slideRight 2s ease;
+    }
+
+    @keyframes rotateY360 {
+      from { transform: rotateY(0deg); }
+      to { transform: rotateY(360deg); }
+    }
+
+    @keyframes slideLeft {
+      from { transform: translateX(-100%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    @keyframes slideRight {
+      from { transform: translateX(100%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    footer {
+      margin-top: 50px;
+      background: #fff0f5;
+      padding: 20px;
+      color: #880e4f;
+      font-size: 18px;
+      animation: fadeIn 2s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+     .main-photo {
+      position: relative;
+      width: 800px;
+      /* margin: 50px auto; */
+      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+      border-radius: 15px;
+      overflow: hidden;
+    }
+
+    .main-photo img {
+      width: 100%;
+      display: block;
+      border-radius: 15px;
+    }
+
+    .overlay-text {
+      position: absolute;
+      top: 20%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-size: 24px;
+      font-weight: bold;
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-family: cursive;
+      text-shadow: 1px 1px 5px black;
+    }
+
+    .bg-text {
+      position: absolute;
+      top: 20%;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 40px;
+      font-weight: bold;
+      color: rgba(255, 255, 255, 0.9);
+      text-shadow: 3px 3px 8px #ff69b4;
+      animation: glowText 3s ease-in-out infinite;
+      z-index: 1;
+}
+
+@keyframes glowText {
+  0%, 100% {
+    text-shadow: 0 0 10px #ff80ab, 0 0 20px #ff4081, 0 0 30px #f50057;
+  }
+  50% {
+    text-shadow: 0 0 20px #ffb3c6, 0 0 30px #ff69b4, 0 0 40px #ec407a;
+  }
+}
+
+.landing {
+  position: relative;
+  background: url('https://i.pinimg.com/originals/fe/67/91/fe67916b0cfa7d97dfe8a012b259da68.gif') center center / cover no-repeat;
+  width: 100%;
+  height: 100vh;
+  overflow: auto;
+  color: white;
+  text-align: center;
+  padding-top: 100px;
+}
+
+  </style>
+</head>
+<body>
+  <div class="login-box">
+    <h2>💖 Welcome 💖</h2>
+    <input type="text" id="username" placeholder="Username" />
+    <input type="password" id="password" placeholder="Password" />
+    <button onclick="login()">Login</button>
+    <div id="errorMsg" class="error"></div>
+  </div>
+
+  <script>
+    function login() {
+      const user = document.getElementById("username").value;
+      const pass = document.getElementById("password").value;
+
+      if (user === "suman" && pass === "love") {
+  document.body.innerHTML = `
+    <div class="landing">
+      <div class="bg-text">
+        💖 You're My World 💖
+      </div>
+      <h1 class="cutout-text">💘 Our Magical Love 💘</h1>
+      // <div class="search-bar">
+      //   <input type="text" placeholder="Search...">
+      //   <button>Search 🔍</button>
+      // </div>
+      <div class="main-photo">
+        <img src="jaan2.jpeg" alt="Main Love">
+        <div class="overlay-text">✨ Hover me for love ✨</div>
+      </div>
+      <div class="rotating-photos">
+        <div class="photo left-in">
+          <img src="jaan.jpeg" alt="Love1">
+        </div>
+        <div class="photo middle-rotate">
+          <img src="jaan.jpeg" alt="Love2">
+        </div>
+        <div class="photo right-in">
+          <img src="jaan.jpeg" alt="Love3">
+        </div>
+      </div>
+      <footer>
+        🧸 With ❤️ from You & Me | 📞 99999XXXXX | 📧 us@foreverlove.com | 😍 You're my everything 💞
+      </footer>
+    </div>
+  `;
+}
+ else {
+        document.getElementById("errorMsg").innerText = "❌ Username ya Password गलत है!";
+      }
+    }
+  </script>
+</body>
+</html>
